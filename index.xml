@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cameron O&#39;Connor</title>
+    <link>localhost:1313/</link>
+    <description>Recent content on Cameron O&#39;Connor</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Oct 2017 03:29:08 -0700</lastBuildDate>
+    
+	<atom:link href="localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Downing JCR RBS | Cameron O&#39;Connor</title>
+      <link>localhost:1313/ballot/</link>
+      <pubDate>Sun, 15 Oct 2017 03:29:08 -0700</pubDate>
+      
+      <guid>localhost:1313/ballot/</guid>
+      <description>The Challenge Every year, Downing College JCR (junior common room) has to allocate rooms to all students in college. This is done by means of a random ballot, whose function will be explained in greater detail below. The JCR must also decide the price of each room in College.
+After being one of the ballot&amp;rsquo;s victims the first time &amp;lsquo;round, and seeing how inefficient the current system was, I decided that a better solution was needed.</description>
+    </item>
+    
+  </channel>
+</rss>
