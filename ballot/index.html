@@ -84,6 +84,14 @@
 
 <p><img src="img/ballot2.png"></p>
 
+<p>Each student&rsquo;s rank is automatically generated, and they are given a 5-minute time slot in which to pick their room. Come ballot day, students can easily choose from available rooms, and confirm their selection in just a few clicks.</p>
+
+<h1 id="the-admin-interface">The Admin Interface</h1>
+
+<p>I found that Django&rsquo;s auto-generated admin portal wasn&rsquo;t particularly intuitive, so I built my own. Registered admin users can allocate rooms manually, edit syndicates and add/remove students from the ballot.</p>
+
+<p><img src="img/ballot3.png"></p>
+
 <h1 id="the-stack">The Stack</h1>
 
 <p>The web application backend was developed in Django, because it&rsquo;s quite nice, and the UI is built using Bootstrap and jQuery. To enable students to log in with their Cambridge-issued Raven credentials, <a href="https://pypi.org/project/django-ucamwebauth/">django-ucamwebauth</a> is used as an authentication backend. The Django backend connects to a MySQL instance, and is deployed to the JCR VPS using mod_wsgi on Apache. The Python backend executes in a Python 3.5 <a href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>.</p>
