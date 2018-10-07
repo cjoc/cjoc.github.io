@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Downing JCR RBS | Cameron O&#39;Connor</title>
+<title>Cranworth Law Society | Cameron O&#39;Connor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#516D81">
 <meta name="description" content="">
@@ -23,16 +23,16 @@
         
         <section>
     <div class="main-case-study">
-        <h1 class="title" style="text-align: center;">Downing JCR Room Balloting System</h1>
+        <h1 class="title" style="text-align: center;">Cranworth Law Society Website</h1>
         <h2 class="subtitle" style="text-align: center;">Web App</h2>
-        <img src="img/ballot1.png" alt="">
-        <p align="center" class="summary">I created a web application in Django for managing Downing College&#39;s yearly room ballot.</p>
+        <img src="img/cranworth1.png" alt="">
+        <p align="center" class="summary">I created a web application in Django to serve Downing College&#39;s Cranworth Law Society website.</p>
         <h1 style="color: black; font-family: merriweather; font-size: 26px; line-height: 1.7em; margin-top: 0px;"></h1>
         <div align="center" class="case-links">
             
             
             <div class="link-div">
-                <a href="https://github.com/dowjcr/rooms" target="blank" class="case-detail-link">
+                <a href="https://github.com/cjoc/cranworth" target="blank" class="case-detail-link">
                     
                     <img src="https://cjoc.github.io/svg/github.svg">
                     
@@ -41,7 +41,7 @@
             </div>
             
             <div class="link-div">
-                <a href="https://ballot.downingjcr.co.uk/" target="blank" class="case-detail-link">
+                <a href="http://cranworth.soc.srcf.net" target="blank" class="case-detail-link">
                     
                     <img src="https://cjoc.github.io/svg/eyeball.svg">
                     
@@ -60,41 +60,29 @@
 
 <h1 id="the-challenge">The Challenge</h1>
 
-<p>Every year, Downing College JCR (junior common room) has to allocate rooms to all students in college. This is done by means of a random ballot, whose function will be explained in greater detail below. The JCR must also decide the price of each room in College.</p>
+<p>Downing College is widely known as Cambridge&rsquo;s &ldquo;Law College&rdquo;, with more law students than almost any other college, and a number of high-profile law fellows. Downing has its own law society, named Cranworth, which organises talks and helps students find success in their careers.</p>
 
-<p>After being one of the ballot&rsquo;s victims the first time &lsquo;round, and seeing how inefficient the current system was, I decided that a better solution was needed. So I created a web application to manage the ballot.</p>
-
-<h1 id="the-ballot">The Ballot</h1>
-
-<p>The first stage is to understand the complexities of the ballot process.</p>
-
-<p>Halfway through their first year, students must form a &lsquo;syndicate&rsquo;, a group of up to 6 students who will pick their rooms at the same time. These syndicates are than randomised, so that each student is given a rank, which determines the order in which students can pick rooms. Naturally, students with a high rank will pick first, and so have greater choice. Students stay in their syndicates for second year, when the order of the ballot is reversed - so if you picked last in first year, you&rsquo;ll pick first in second year. Second years always pick before first years.</p>
-
-<p>There are plenty of exceptions to this rule, however. Students may be removed from the ballot for medical reasons, and allocated a room outside of the ballot. If a student is intermitting, they need to be removed from the ballot that year, but added back in at the same place the following year. The college&rsquo;s accommodation officer normally manages these exceptions.</p>
+<p>The society president wanted a website to serve as a repository for important information and recruitment data, with access restricted to only the society&rsquo;s members.</p>
 
 <h1 id="the-problem">The Problem</h1>
 
-<p>For the 2018 ballot, the college introduced their own &ldquo;management system&rdquo; - essentially a database in SharePoint. Only JCR Committee members were allowed to edit the database, so the ballot had to be conducted in person. Basic information such as floorplans were not available online - instead, students had to view paper copies just before choosing their room. The stress-charged air in the ballot room could be cut with a knife.</p>
+<p>The natural solution would be to use a more generic CMS, such as WordPress or Joomla, however there are some issues with this. The website&rsquo;s main purpose is to hold information about law firms - this information is held in a specific format (e.g. with attributes &lsquo;logo&rsquo;, &lsquo;description&rsquo;, &lsquo;category&rsquo;), and this information must be easily updatable, ideally without changing the plain text to ensure consistency.</p>
 
-<p>Downing is possibly the only Cambridge college which allows the JCR to manage the balloting &amp; pricing process, and creating our own system would reinforce the JCR&rsquo;s control.</p>
+<p>Restricting access to users authenticated with Raven is fairly easy with Apache plugins, however specifying a smaller subset of allowed users, and allowing this list to be easily edited by a law student, is somewhat more challenging.</p>
+
+<p>Given previous experience, I concluded that a Django app would be the best way to proceed.</p>
 
 <h1 id="the-ux">The UX</h1>
 
-<p>Students can log in with their Raven credentials, then are met with their dashboard, showing relevant information. First-year students can create their syndicate by searching for students by name or CRSid, using a simple jQuery autocomplete field. Clicking the student adds them to this syndicate.</p>
+<p>Users are first invited to log in using Raven. If they are registered as a society member, they are met with the homepage; else a suitable error message is shown.</p>
 
-<p><img src="img/ballot2.png"></p>
+<p><img src="img/cranworth2.png"></p>
 
-<p>Each student&rsquo;s rank is automatically generated, and they are given a 5-minute time slot in which to pick their room. Come ballot day, students can easily choose from available rooms, and confirm their selection in just a few clicks.</p>
-
-<h1 id="the-admin-interface">The Admin Interface</h1>
-
-<p>I found that Django&rsquo;s auto-generated admin portal wasn&rsquo;t particularly intuitive, so I built my own. Registered admin users can allocate rooms manually, edit syndicates and add/remove students from the ballot.</p>
-
-<p><img src="img/ballot3.png"></p>
+<p>Users can view a list of all firms, and sort this list by category. Clicking on a firm brings up the firm detail page, which includes important information, as well as reviews which previous interns/employees have left of this firm. Static pages are generated automatically. Featured firms for the homepage are randomised dynamically.</p>
 
 <h1 id="the-stack">The Stack</h1>
 
-<p>The web application backend was developed in Django, because it&rsquo;s quite nice, and the UI is built using Bootstrap and jQuery. To enable students to log in with their Cambridge-issued Raven credentials, <a href="https://pypi.org/project/django-ucamwebauth/">django-ucamwebauth</a> is used as an authentication backend. The Django backend connects to a MySQL instance, and is deployed to the JCR VPS using mod_wsgi on Apache. The Python backend executes in a Python 3.5 <a href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>.</p>
+<p>The web application backend was developed in Django, because it&rsquo;s quite nice, and the UI is built using Bootstrap. To enable students to log in with their Cambridge-issued Raven credentials, <a href="https://pypi.org/project/django-ucamwebauth/">django-ucamwebauth</a> is used as an authentication backend. The Django backend connects to a MySQL instance, and is deployed to the SRCF&rsquo;s webserver &lsquo;sinkhole&rsquo; using uwsgi and a series of Apache RewriteRules to enable reverse-proxy to a local port. The Python backend executes in a Python 3.5 <a href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>.</p>
 
             </div>
         </section>
